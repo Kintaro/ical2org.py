@@ -107,8 +107,7 @@ class Convertor():
                                     .decode("utf-8").split('\\n'))
             description = description.replace('\\,', ',')
 
-        plain_summary = BeautifulSoup(summary)
-        output.append(u"* {}".format(plain_summary.get_text()))
+        output.append(u"* {}".format(summary))
         if rec_event and self.RECUR_TAG:
             output.append(u" {}".format(self.RECUR_TAG))
         output.append(u"\n")
@@ -152,9 +151,9 @@ class Convertor():
                         org_date(ev_start, self.tz),
                         org_date(ev_end - timedelta(days=1), self.tz),
                     ))
-        output.append(u"ROOTNODE\n")
+
         if description:
-            plain_text = BeautifulSoup(description)
+            plain_text = BeautifulSoup(description, "html.parser")
             output.append(u"{}\n".format(plain_text.get_text()))
         output.append(u"\n")
         return ''.join(output)
