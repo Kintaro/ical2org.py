@@ -152,7 +152,7 @@ class Convertor():
                         org_date(ev_start, self.tz),
                         org_date(ev_end - timedelta(days=1), self.tz),
                     ))
-
+        output.append(u"ROOTNODE\n")
         if description:
             plain_text = BeautifulSoup(description)
             output.append(u"{}\n".format(plain_text.get_text()))
