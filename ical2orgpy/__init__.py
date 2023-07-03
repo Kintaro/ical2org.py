@@ -153,7 +153,7 @@ class Convertor():
                     ))
 
         if description:
-            plain_text = BeautifulSoup(html)
+            plain_text = BeautifulSoup(description)
             output.append(u"{}\n".format(plain_text.get_text()))
         output.append(u"\n")
         return ''.join(output)
