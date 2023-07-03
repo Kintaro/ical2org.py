@@ -3,7 +3,7 @@ from __future__ import print_function
 import sys
 import traceback
 from datetime import date, datetime, timedelta, time
-
+from bs4 import BeautifulSoup
 import click
 import recurring_ical_events
 from icalendar import Calendar
@@ -153,7 +153,8 @@ class Convertor():
                     ))
 
         if description:
-            output.append(u"{}\n".format(description))
+            plain_text = BeautifulSoup(html)
+            output.append(u"{}\n".format(plain_text.get_text()))
         output.append(u"\n")
         return ''.join(output)
 
