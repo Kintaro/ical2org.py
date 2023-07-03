@@ -107,7 +107,8 @@ class Convertor():
                                     .decode("utf-8").split('\\n'))
             description = description.replace('\\,', ',')
 
-        output.append(u"* {}".format(summary))
+        plain_summary = BeautifulSoup(summary)
+        output.append(u"* {}".format(plain_summary.get_text()))
         if rec_event and self.RECUR_TAG:
             output.append(u" {}".format(self.RECUR_TAG))
         output.append(u"\n")
