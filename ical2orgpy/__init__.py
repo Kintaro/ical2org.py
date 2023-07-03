@@ -12,7 +12,7 @@ from tzlocal import get_localzone
 
 MIDNIGHT = time(0, 0, 0)
 
-__version__ = "0.5"
+__version__ = "0.5.1"
 
 def org_datetime(dt, tz):
     '''Timezone aware datetime to YYYY-MM-DD DayofWeek HH:MM str in localtime.
